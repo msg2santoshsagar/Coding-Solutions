@@ -6,11 +6,11 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
- * https://www.hackerrank.com/challenges/simple-text-editor/problem
- * @author hp_pc
+ * https://www.hackerrank.com/challenges/simple-text-editor/problem 
+ * @author Santosh Sagar
  *
  */
-public class SimpleTextEditor {
+public class Solution {
 
 	private static final String INPUT_FILE_PATH = "src/com/alife/hackerrank/simple_text_editor/input.txt";
 
