@@ -2,18 +2,18 @@
 
 Refrence : https://www.hackerrank.com/challenges/simple-text-editor/problem 
 
-In this challenge, you must implement a simple text editor. Initially, your editor contains an empty string, . You must perform  operations of the following  types:
+In this challenge, you must implement a simple text editor. Initially, your editor contains an empty string, S . You must perform Q operations of the following 4 types:
 
 
-1. append - Append string  to the end of .
-2. delete - Delete the last  characters of .
-3. print - Print the  character of .
-4. undo - Undo the last (not previously undone) operation of type  or , reverting  to the state it was in prior to that 			operation.
+1. append(W) - Append string W to the end of S.
+2. delete(k) - Delete the last k characters of S .
+3. print(K) - Print the kth character of .
+4. undo() - Undo the last (not previously undone) operation of type 1 or 2 , reverting S  to the state it was in prior to that 			operation.
 
 ## Input Format
 
-The first line contains an integer, , denoting the number of operations. 
-Each line  of the  subsequent lines (where ) defines an operation to be performed. Each operation starts with a single integer,  (where ), denoting a type of operation as defined in the Problem Statement above. If the operation requires an argument,  is followed by its space-separated argument. For example, if  and , line  will be 1 abcd.
+The first line contains an integer, Q , denoting the number of operations. 
+Each line i of the  subsequent lines (where 0<= i <= Q) defines an operation to be performed. Each operation starts with a single integer t,  (where ), denoting a type of operation as defined in the Problem Statement above. If the operation requires an argument,  is followed by its space-separated argument. For example, if  and , line  will be 1 abcd.
 
 ## Constraints
 
@@ -40,7 +40,7 @@ Each operation of type  must print the  character on a new line.
  3 1
 ```
 
-###Sample Output
+### Sample Output
 
 ```
 c
