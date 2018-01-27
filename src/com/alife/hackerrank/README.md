@@ -29,6 +29,7 @@ Each operation of type  must print the  character on a new line.
 
 ###Sample Input
 
+```sh
  8
  1 abc
  3 3
@@ -38,6 +39,7 @@ Each operation of type  must print the  character on a new line.
  4 
  4 
  3 1
+```
 
 ###Sample Output
 
