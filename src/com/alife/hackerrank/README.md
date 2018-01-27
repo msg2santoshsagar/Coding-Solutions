@@ -26,7 +26,7 @@ Each line i of the  subsequent lines (where 0<= i <= Q) defines an operation to 
 
 Each operation of type  must print the  character on a new line.
 
-### Sample Input
+## Sample Input
 
 ```
  8
@@ -40,7 +40,7 @@ Each operation of type  must print the  character on a new line.
  3 1
 ```
 
-### Sample Output
+## Sample Output
 
 ```
 c
@@ -48,7 +48,7 @@ y
 a
 ```
 
-### Explanation
+## Explanation
 
 Initially,  is empty. The following sequence of  operations are described below:
 
