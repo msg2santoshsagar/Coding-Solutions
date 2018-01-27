@@ -2,4 +2,4 @@
  * @author Santosh Sagar
  *
  */
-package com.alife.hackerrank;
+package com.alife.gfg;
