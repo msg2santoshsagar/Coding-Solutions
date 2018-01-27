@@ -29,7 +29,7 @@ Each operation of type  must print the  character on a new line.
 
 ###Sample Input
 
-```sh
+```
  8
  1 abc
  3 3
@@ -43,10 +43,11 @@ Each operation of type  must print the  character on a new line.
 
 ###Sample Output
 
+```
 c
 y
 a
-
+```
 
 ###Explanation
 
