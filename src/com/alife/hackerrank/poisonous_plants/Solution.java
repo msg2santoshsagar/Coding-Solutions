@@ -2,8 +2,12 @@ package com.alife.hackerrank.poisonous_plants;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.stream.IntStream;
 
 /**
  * https://www.hackerrank.com/challenges/poisonous-plants/problem
@@ -31,7 +35,18 @@ public class Solution {
 
 
 	public static void doTask(Scanner scanner){
-		// TODO : Complete this function
+		
+		int n 			 			= scanner.nextInt();
+		Stack<Integer>   stack 	    = new Stack<>();  
+		
+		for(int i=0;i<n;i++){
+			int number = scanner.nextInt();
+			stack.push(number);
+		}
+		
+		
+		
+		System.out.println(stack.size());
 		
 	}
 
