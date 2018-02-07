@@ -2,17 +2,14 @@ package com.alife.hackerrank.poisonous_plants;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.stream.IntStream;
 
 /**
+ * Not solved yet
  * https://www.hackerrank.com/challenges/poisonous-plants/problem
  * @author Santosh Sagar
- *
+ * N
  */
 public class Solution {
 
