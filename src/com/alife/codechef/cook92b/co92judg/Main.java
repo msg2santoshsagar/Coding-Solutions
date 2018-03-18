@@ -1,17 +1,21 @@
-package com.alife.codechef.march18b.pshtrg;
+package com.alife.codechef.cook92b.co92judg;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 
-public class SolutionD {
+public class Main {
 
-	private static final String 	INPUT_FILE_PATH = "src/com/alife/codechef/march18b/pshtrg/input.txt";
-	
+
+
+	private static final String 	INPUT_FILE_PATH = "src/com/alife/codechef/cook92b/co92judg/input.txt";
+
 	public static void main(String[] args){
 
 		String homePc = System.getenv("HOME_PC");
@@ -24,70 +28,62 @@ public class SolutionD {
 			scanner = new FastScanner(INPUT_FILE_PATH);
 		}
 
-		SolutionD solution = new SolutionD();
+		Main solution = new Main();
 		solution.solve(scanner);
+
 	}
 
-	private void solve(FastScanner scanner){
+	private void solve(FastScanner scanner) {
 
-		int n = scanner.nextInt();
-		int q = scanner.nextInt();
+		int tc = scanner.nextInt();
 
-		int[]    	array	  	= new int[n];
+		while( tc -- > 0 ){
 
-		for(int i=0;i<n;i++){
-			array[i] 	= scanner.nextInt();
-		}
-
-
-		while( q -- > 0 ){
-
-			int choice = scanner.nextInt();
-			int pos    = scanner.nextInt();
-			int value  = scanner.nextInt();
-
-			if(choice == 1){
-				array[pos-1]  = value;
-			}else{
-
-				int l 		= 	pos;
-				int r 		=	value;
-				
-				long maxPerimeter = 0;
-
-				for( int i=l-1; i < r ;  i++){
-					
-					for(int j= i+1; j< r; j++ ){
-						
-						for(int k=j+1; k <r ;k++){
-							
-							if( isValidTriangle( array[i], array[j], array[k] ) && maxPerimeter < (array[i]+array[j]+array[k])){
-								maxPerimeter = array[i]+array[j]+array[k];
-							}
-							
-						}
-						
-					}
-					
+			int n = scanner.nextInt();
+			
+			int aMax = 0;
+			int aSum = 0;
+			
+			for(int i=0;i<n;i++){
+				int num = scanner.nextInt();
+				aSum += num;
+				if(aMax < num){
+					aMax = num;
 				}
-				
-
-				System.out.println(maxPerimeter);
-
 			}
+			
+			int bMax = 0;
+			int bSum = 0;
+			
+			for(int i=0;i<n;i++){
+				int num = scanner.nextInt();
+				bSum += num;
+				if(bMax < num){
+					bMax = num;
+				}
+			}
+			
+			
+			int aTime = aSum - aMax;
+			int bTime = bSum - bMax;
+			
+			if(aTime ==  bTime){
+				System.out.println("Draw");
+			}else if(aTime < bTime){
+				System.out.println("Alice");
+			}else{
+				System.out.println("Bob");
+			}
+			
+			
+			
 
-
-		} // while method
-
-
-	}// solve method
-
-	private boolean isValidTriangle(int i, int j, int k) {
-		if( i+j > k && i+k > j && j+k > i){
-			return true;
 		}
-		return false;
+
+
 	}
+
+
 
 	public static class FastScanner {
 
@@ -142,8 +138,6 @@ public class SolutionD {
 			return str;
 		}
 	}
-
-
 
 
 }

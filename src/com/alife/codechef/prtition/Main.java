@@ -1,17 +1,21 @@
-package com.alife.codechef.march18b.pshtrg;
+package com.alife.codechef.prtition;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 
-public class SolutionD {
+public class Main {
 
-	private static final String 	INPUT_FILE_PATH = "src/com/alife/codechef/march18b/pshtrg/input.txt";
-	
+
+
+	private static final String 	INPUT_FILE_PATH = "src/com/alife/codechef/prtition/input.txt";
+
 	public static void main(String[] args){
 
 		String homePc = System.getenv("HOME_PC");
@@ -24,70 +28,78 @@ public class SolutionD {
 			scanner = new FastScanner(INPUT_FILE_PATH);
 		}
 
-		SolutionD solution = new SolutionD();
+		Main solution = new Main();
 		solution.solve(scanner);
+
 	}
 
-	private void solve(FastScanner scanner){
+	private void solve(FastScanner scanner) {
 
-		int n = scanner.nextInt();
-		int q = scanner.nextInt();
+		int tc = scanner.nextInt();
 
-		int[]    	array	  	= new int[n];
+		while( tc -- > 0 ){
 
-		for(int i=0;i<n;i++){
-			array[i] 	= scanner.nextInt();
-		}
+			int x = scanner.nextInt();
+			int n = scanner.nextInt();
 
+			long sum = ( (n * (n+1) ) / 2 ) - x ;
 
-		while( q -- > 0 ){
+			//System.out.println("SUM : "+sum);
 
-			int choice = scanner.nextInt();
-			int pos    = scanner.nextInt();
-			int value  = scanner.nextInt();
+			Set<Long> set = new HashSet<>();
 
-			if(choice == 1){
-				array[pos-1]  = value;
-			}else{
+			if( (sum & 1) == 0 ){
+			//	System.out.println("The sum is even");
 
-				int l 		= 	pos;
-				int r 		=	value;
-				
-				long maxPerimeter = 0;
+				long half = sum / 2;
 
-				for( int i=l-1; i < r ;  i++){
-					
-					for(int j= i+1; j< r; j++ ){
-						
-						for(int k=j+1; k <r ;k++){
-							
-							if( isValidTriangle( array[i], array[j], array[k] ) && maxPerimeter < (array[i]+array[j]+array[k])){
-								maxPerimeter = array[i]+array[j]+array[k];
-							}
-							
-						}
-						
-					}
-					
+				long halfSum = 0;
+
+				long i = Math.min(half, n);
+
+				if(i == x){
+					i--;
 				}
+
+				//System.out.println("Before WHile loop : "+half+" , "+halfSum+", "+i);
 				
+				while(i > 0){
 
-				System.out.println(maxPerimeter);
+					if( halfSum + i <= half && i != x ){
+						halfSum += i;
+						set.add(i);
+						i = Math.min(half -halfSum, i);
+					}else{
+						i--;
+					}
 
+				}
+
+				//System.out.println("HALF SUM  :: "+halfSum);
+				//System.out.println("SET :: "+set);
+				
+				if(halfSum != half){
+					System.out.println("impossible");
+				}else{
+					for(long j=1;j<=n;j++){
+						System.out.print( j == x ? 2 : set.contains(j) ? 0 : 1 );
+					}
+					System.out.println();
+				}
+
+
+			}else{
+				System.out.println("The sum is odd");
+				System.out.println("impossible");
 			}
 
 
-		} // while method
-
-
-	}// solve method
-
-	private boolean isValidTriangle(int i, int j, int k) {
-		if( i+j > k && i+k > j && j+k > i){
-			return true;
 		}
-		return false;
+
+
 	}
+
+
 
 	public static class FastScanner {
 
@@ -142,8 +154,6 @@ public class SolutionD {
 			return str;
 		}
 	}
-
-
 
 
 }

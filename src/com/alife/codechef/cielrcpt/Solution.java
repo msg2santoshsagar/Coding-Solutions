@@ -1,17 +1,25 @@
-package com.alife.codechef.march18b.pshtrg;
+package com.alife.codechef.cielrcpt;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.util.StringTokenizer;
 
+/**
+ * @author Santosh Sagar
+ * https://www.codechef.com/problems/CIELRCPT
+ * @notSolvedYet
+ *
+ */
+public class Solution {
 
-public class SolutionD {
 
-	private static final String 	INPUT_FILE_PATH = "src/com/alife/codechef/march18b/pshtrg/input.txt";
-	
+
+	private static final String 	INPUT_FILE_PATH = "src/com/alife/codechef/cielrcpt/input.txt";
+
 	public static void main(String[] args){
 
 		String homePc = System.getenv("HOME_PC");
@@ -24,69 +32,54 @@ public class SolutionD {
 			scanner = new FastScanner(INPUT_FILE_PATH);
 		}
 
-		SolutionD solution = new SolutionD();
+		Solution solution = new Solution();
 		solution.solve(scanner);
+
 	}
 
-	private void solve(FastScanner scanner){
+	private void solve(FastScanner scanner) {
 
-		int n = scanner.nextInt();
-		int q = scanner.nextInt();
+		int tc = scanner.nextInt();
 
-		int[]    	array	  	= new int[n];
+		while( tc -- > 0 ){
 
-		for(int i=0;i<n;i++){
-			array[i] 	= scanner.nextInt();
+			int n = scanner.nextInt();
+
+			int menuCount = getMinMenu(n);
+
+			System.out.println(menuCount);
+
 		}
 
 
-		while( q -- > 0 ){
+	}
 
-			int choice = scanner.nextInt();
-			int pos    = scanner.nextInt();
-			int value  = scanner.nextInt();
-
-			if(choice == 1){
-				array[pos-1]  = value;
-			}else{
-
-				int l 		= 	pos;
-				int r 		=	value;
-				
-				long maxPerimeter = 0;
-
-				for( int i=l-1; i < r ;  i++){
-					
-					for(int j= i+1; j< r; j++ ){
-						
-						for(int k=j+1; k <r ;k++){
-							
-							if( isValidTriangle( array[i], array[j], array[k] ) && maxPerimeter < (array[i]+array[j]+array[k])){
-								maxPerimeter = array[i]+array[j]+array[k];
-							}
-							
-						}
-						
-					}
-					
-				}
-				
-
-				System.out.println(maxPerimeter);
-
+	private int getMinMenu(int n) {
+		
+		
+		if(n == 1){
+			return 1;
+		}
+		
+		
+		int ctr = 0;
+		
+		while(n!= 0){
+		
+			double p = Math.floor((     Math.log(n) / Math.log(2) ) );
+			if(p > 11){
+				p = 11;
 			}
-
-
-		} // while method
-
-
-	}// solve method
-
-	private boolean isValidTriangle(int i, int j, int k) {
-		if( i+j > k && i+k > j && j+k > i){
-			return true;
+			//System.out.println("P : "+p);
+			n = (int) (n - Math.pow(2, p));
+			ctr++;
+			
 		}
-		return false;
+		
+		//System.out.println("CTR :: "+ctr);
+		
+		return ctr;
+		 
 	}
 
 	public static class FastScanner {
@@ -142,8 +135,6 @@ public class SolutionD {
 			return str;
 		}
 	}
-
-
 
 
 }
