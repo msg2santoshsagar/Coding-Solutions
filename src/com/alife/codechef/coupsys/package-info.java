@@ -3,4 +3,4 @@
  * @author santosh sagar
  *
  */
-package com.alife.codechef.xds;
+package com.alife.codechef.coupsys;

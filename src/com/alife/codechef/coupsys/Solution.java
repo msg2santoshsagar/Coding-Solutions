@@ -1,18 +1,16 @@
-package com.alife.codechef.xds;
+package com.alife.codechef.coupsys;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 
 public class Solution {
 
-	private static final String 	INPUT_FILE_PATH = "src/com/alife/codechef/xds/input.txt";
+	private static final String 	INPUT_FILE_PATH = "src/com/alife/codechef/coupsys/input.txt";
 
 	public static void main(String[] args) throws IOException{
 
@@ -37,55 +35,53 @@ public class Solution {
 
 		while(tc-- > 0){
 
-			int N = scanner.nextInt();
-
-			int a = 0;
-			int b = 0;
-			int max = Integer.MAX_VALUE;
+			int n = scanner.nextInt();
 
 
-			for (int i= (int)Math.ceil( Math.sqrt((double)N)); i>=1; i--)
-			{
-				if (N%i==0)
-				{
-					int divisor = N/i;
+			int c1=0,c2=0,c3=0;
+			int d1=0,d2=0,d3=0;
 
-					// If divisors are equal, print only one
-					if (divisor == i){
-						if(max > i){
-							a = i;
-							b = i;
-							break;
-						}
+			while(n-->0){
 
-					}else{ // Otherwise print both
-						if(max > i){
-							a = i;
-							b = divisor;
-							break;
-						}
+				int city 	= scanner.nextInt();
+				int level   = scanner.nextInt();
+				int dis		= scanner.nextInt();
+				
+				if(level == 1){
+					
+					if(dis > d1){
+						d1 = dis;
+						c1  = city;
+					}else if(dis == d1 && c1 > city){
+						c1 = city;
 					}
+					
+				}else if(level == 2){
+					
+					if(dis > d2){
+						d2 = dis;
+						c2  = city;
+					}else if(dis == d2 && c2 > city){
+						c2 = city;
+					}
+					
+				}else{
+					
+					if(dis > d3){
+						d3 = dis;
+						c3  = city;
+					}else if(dis == d3 && c3 > city){
+						c3 = city;
+					}
+					
 				}
+				
+				
 			}
-
-			BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
-
-			for(int i=0;i<a;i++){
-				if(i%1000 == 0){
-					log.flush();
-				}
-				log.write("X");
-			}
-			log.flush();
-			for(int i=0;i<b;i++){
-				log.write("D");
-				if(i%1000 == 0){
-					log.flush();
-				}
-			}
-			log.write("\n");
-			log.flush();
-
+			
+			System.out.println(d1+" "+c1);
+			System.out.println(d2+" "+c2);
+			System.out.println(d3+" "+c3);
 		}
 
 	}
