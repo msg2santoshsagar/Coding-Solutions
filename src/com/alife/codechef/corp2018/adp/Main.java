@@ -1,4 +1,4 @@
-package com.alife.google.codejam.round1a.problem1;
+package com.alife.codechef.corp2018.adp;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -11,11 +11,11 @@ import java.util.StringTokenizer;
  * @author Santosh Sagar
  *
  */
-public class Solution {
+public class Main {
 
 
 
-	private static final String 	INPUT_FILE_PATH = "src/com/alife/google/codejam/round1a/problem1/input.txt";
+	private static final String 	INPUT_FILE_PATH = "src/com/alife/codechef/corp2018/adp/input.txt";
 
 	public static void main(String[] args){
 
@@ -29,7 +29,7 @@ public class Solution {
 			scanner = new FastScanner(INPUT_FILE_PATH);
 		}
 
-		Solution solution = new Solution();
+		Main solution = new Main();
 		solution.solve(scanner);
 
 	}
@@ -37,21 +37,32 @@ public class Solution {
 	private void solve(FastScanner scanner) {
 
 		int tc = scanner.nextInt();
-		
-		int R = scanner.nextInt();
-		int C = scanner.nextInt();
-		
-		int H = scanner.nextInt();
-		int V = scanner.nextInt();
-		
-		char[][]  cake = new char[R][C];
-		
-		for(int i=0;i<R;i++){
-			cake[i] = scanner.nextLine().toCharArray();
-		}
-		
-		for(int i=0;i<R;i++){
-			System.out.println(cake[i]);
+
+		while(tc-->0){
+
+			long forwardSteps  = scanner.nextLong();
+			long backwardSteps = scanner.nextLong();
+
+			long source        = scanner.nextLong();
+			long target        = scanner.nextLong();
+			
+			long absDiff = forwardSteps-backwardSteps;
+
+			if(forwardSteps!=backwardSteps){
+				
+				if( (Math.abs(target-source) - absDiff ) % forwardSteps  == 0 || (Math.abs(target-source) + absDiff ) % forwardSteps  == 0 ){
+					System.out.println("YES");
+				}else{
+					System.out.println("NO");
+				}
+				
+			}else if(source == target){
+				System.out.println("YES");
+			}else{
+				System.out.println("NO");
+			}
+
+
 		}
 
 	}
