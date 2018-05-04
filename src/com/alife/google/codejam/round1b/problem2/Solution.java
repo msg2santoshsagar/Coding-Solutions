@@ -1,4 +1,4 @@
-package com.alife.google.codejam.round1a.problem2;
+package com.alife.google.codejam.round1b.problem2;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
