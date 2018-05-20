@@ -1,10 +1,14 @@
-package com.alife.google.codejam.round1b.problem1;
+package com.alife.google.codejam.round1c.problem1;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 /**
@@ -15,7 +19,7 @@ public class Solution {
 
 
 
-	private static final String 	INPUT_FILE_PATH = "src/com/alife/google/codejam/round1b/problem1/input.txt";
+	private static final String 	INPUT_FILE_PATH = "src/com/alife/google/codejam/round1c/problem1/input.txt";
 
 	public static void main(String[] args){
 
@@ -34,45 +38,75 @@ public class Solution {
 
 	}
 
-	private void solve(FastScanner scanner) {
+	private void solve(FastScanner sc) {
 
-		int tc = scanner.nextInt();
-		
+		int tc = sc.nextInt();
+
 		int ques = 0;
-		
+
 		while(ques<tc){
-			
+
 			ques++;
-			
-			
-			int n = scanner.nextInt();
-			int l = scanner.nextInt();
-			
-			double each = 100.0 / n;
-			
-			int sum = 0;
-			int[] c = new int[l];
-			boolean [] done = new boolean[l];
-			
-			for(int i=0; i< l; i++){
-				c[i]    = scanner.nextInt();
-				sum		+= c[i]; 
-				if(Math.round(c[i]*each) > c[i]*each){
-					done[i] = true;
+
+
+			int N = sc.nextInt();
+			int L = sc.nextInt();
+
+			List<String> strings = new ArrayList<>(N);
+
+			List<Set<Character>> list = new ArrayList<>();
+
+			for(int i=0; i<N; i++){
+				String str = sc.nextLine();
+				//System.out.println("Str : "+str);
+				strings.add(str);
+				for(int j=0; j<L; j++){
+					//System.out.println("List size : "+list.size());
+					if(list.size() <= j){
+						list.add(new HashSet<>());
+					}
+
+					list.get(j).add(str.charAt(j));
 				}
 			}
-			
-			int left = n - sum;
-			
-			while(left != 0){
-				
-				
-			}
-			
-			
+
+			//System.out.println(list);
+
+			String word = getNewWord(L,strings,list,0,"");
+
+			System.out.println("Case #"+ques+": "+word);
+
+
 		}
-		
-		
+
+
+
+	}
+
+	private String getNewWord(int l, List<String> strings, List<Set<Character>> list,int wordLength,String word) {
+
+		if(l==wordLength){
+			//System.out.println(" l became to wordlength so returning : "+word);
+			if(strings.contains(word)){
+				return "-";
+			}
+			return word;
+		}
+
+
+		Character[] arr	              = list.get(wordLength).toArray(new Character[0]);
+
+
+		String tmp = "-";
+
+		for(int i=0; i < arr.length; i++ ){
+			tmp = getNewWord(l, strings, list, wordLength+1, word+arr[i]);
+			if(!tmp.equals("-")){
+				break;
+			}
+		}
+
+		return tmp;
 
 	}
 
