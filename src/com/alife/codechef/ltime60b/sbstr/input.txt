@@ -1,0 +1,4 @@
+3
+abcdef 2
+ababc 2
+abcdef 2
