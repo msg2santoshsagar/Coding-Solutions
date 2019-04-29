@@ -21,3 +21,7 @@ bin
 *.zip
 *.tar.gz
 *.rar
+
+.idea
+*.iml
+out/
